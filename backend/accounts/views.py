@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 
 from user_profile.models import UserProfile
+from .serializers import UserSerializer
 
 @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
@@ -98,3 +99,20 @@ class GetCSRFToken(APIView):
 
   def get(self, request, format=None):
     return Response({'success': 'CSRF cookie set'})
+
+
+
+class DeleteAccountView(APIView):
+
+  def delete(self, request, format=None):
+
+    user = self.request.user
+    try:
+
+      user = User.objects.filter(id=user.id).delete()
+      return Response({'success': 'User deleted successfully'})
+
+    except:
+      return Response({'error': ' something went wrong when try to delete user'})
+
+
