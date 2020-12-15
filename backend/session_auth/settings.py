@@ -14,14 +14,14 @@ from pathlib import Path
 
 import environ
 
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # reading .env file
 environ.Env.read_env()
 
 env = environ.Env()
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -92,8 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'session_auth',
-        'USER': env('USER'),
-        'PASSWORD': env('PASSWORD')
+        'USER': 'postgres',
+        'PASSWORD': env('PASSWORD'),
         'HOST': 'localhost',
     }
 }
