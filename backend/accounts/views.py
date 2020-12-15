@@ -116,3 +116,14 @@ class DeleteAccountView(APIView):
       return Response({'error': ' something went wrong when try to delete user'})
 
 
+class GetUsersView(APIView):
+  permission_classes = (permissions.AllowAny,)
+
+  def get(self, request, format=None):
+
+    users = User.objects.all()
+    users = UserSerializer(users, many=True)
+
+    return Response(users.data)
+
+
