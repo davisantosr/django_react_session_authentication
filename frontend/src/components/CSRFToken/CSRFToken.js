@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const CSRFToken = () => {
 
-  const [ csrftoken, setcsrftoken ] = useEffect('');
+  const [ csrftoken, setcsrftoken ] = useState('');
 
   // get this func from django doc
   const getCookie = (name) => {
