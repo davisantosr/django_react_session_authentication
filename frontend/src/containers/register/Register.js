@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 
 import { register } from '../../actions/auth'
 
+import CSRFToken from '../../components/CSRFToken/CSRFToken'
+
 const Register = ({register}) => {
   const [ formData, setFormData ] = useState({
     username: '', 
@@ -36,6 +38,7 @@ const Register = ({register}) => {
       <h1>Register an account</h1>
       <p>Crate an account with our Session Auth application</p>
       <form onSubmit={e => onSubmit(e)}>
+        <CSRFToken/>
         <div className='form-group'>
           <label className='form-label'>Username</label>
           <input
