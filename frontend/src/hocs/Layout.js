@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Navbar from '../components/navbar/Navbar'
 
 
-const Layout = () => (
+const Layout = ({children}) => (
 
-  <div> Layout </div>
+  <Fragment>
+     <Navbar /> 
+     {children}     
+  </Fragment>
 )
 
 export default Layout
