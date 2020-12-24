@@ -43,7 +43,7 @@ const Navbar = ({isAuthenticated, logout}) => {
               <NavLink className='nav-link' exact to='/'>Home</NavLink>
             </li>
             
-            { guestLinks }
+            { isAuthenticated ? authLinks : guestLinks }
 
           </ul>
         </div>
