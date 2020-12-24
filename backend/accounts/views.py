@@ -12,9 +12,10 @@ from .serializers import UserSerializer
 @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
   def get(self, request, format=None):
+    user = self.request.user
 
     try:
-      IsAuthenticated = User.is_authenticated
+      IsAuthenticated = user.is_authenticated
 
       if IsAuthenticated:
         return Response({'isAuthenticated': 'success'})
@@ -48,11 +49,11 @@ class SignUpView(APIView):
                 username=username,
                 password=password
               )
-              user.save()
+              # user.save() #method above already does the create func
               
               user = User.objects.get(id=user.id)
-              user_profile = UserProfile(user=user, first_name='', last_name='', phone='', city='')
-              user_profile.save()
+              user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', city='')
+              # user_profile.save() -> add .create above is equivalent to this .save()
 
               return Response({'success': 'User created successfully'})
     except:
