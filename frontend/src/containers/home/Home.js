@@ -11,10 +11,10 @@ const Home = () => (
         This is a wonderful application with session authentication in React and Django
       </p>
       <hr className='my-4' />
-      <p> Click the button below to log in</p>
-      <Link className='btn btn-primary btn-lg' to='/login'>
+      {/* <p> Click the button below to log in</p> */}
+      {/* <Link className='btn btn-primary btn-lg' to='/login'>
         Login
-      </Link>
+      </Link> */}
 
     </div>
   </div>
