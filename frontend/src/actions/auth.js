@@ -75,6 +75,11 @@ export const register = (username, password, re_password) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
+
+  const body = JSON.stringify({
+    'withCrendetials': true
+  })
+
   const config = {
     headers: {
       'Accept': 'application/json',
@@ -83,9 +88,9 @@ export const logout = () => async dispatch => {
     }
   }
 
-  
+
   try {
-    const res = await axios.post(`http://localhost:8000/accounts/logout`, config);
+    const res = await axios.post(`http://localhost:8000/accounts/logout`, body,  config);
 
     if(res.data.success) {
       dispatch({
