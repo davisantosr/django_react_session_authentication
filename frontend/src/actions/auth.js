@@ -74,3 +74,32 @@ export const register = (username, password, re_password) => async dispatch => {
   }
 }
 
+export const logout = () => async dispatch => {
+  const config = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken')
+    }
+  }
+
+  
+  try {
+    const res = await axios.post(`http://localhost:8000/accounts/logout`, config);
+
+    if(res.data.success) {
+      dispatch({
+        type: LOGOUT_SUCCESS,
+      })
+    } else {
+      dispatch({
+        type: LOGOUT_FAIL
+      })
+    }
+  } catch (error) {
+    dispatch({
+      type: LOGOUT_FAIL
+    })
+  }
+}
+
