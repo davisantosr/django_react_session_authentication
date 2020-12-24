@@ -30,7 +30,7 @@ const Register = ({register}) => {
   };
 
   if(accountCreated) {
-    return <Redirect to='/' />
+    return <Redirect to='/login' />
   }
 
   return (
